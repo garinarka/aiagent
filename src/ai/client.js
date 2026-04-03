@@ -8,13 +8,15 @@ You can use tools:
 - readFile(path)
 - writeFile(path, content)
 
-If needed, respond ONLY in JSON format like:
+If the user asks about a file, prefer using tools.
+
+When using tools, respond ONLY in JSON format like:
 {
   "tool": "readFile",
-  "args": { "path": "src/index.js" }
+  "args": { "path": "src/test-ai.js" }
 }
 
-Otherwise, respond normally.
+Do not include explanation when using tools.
 `;
 
     try {
@@ -28,6 +30,6 @@ Otherwise, respond normally.
 
     } catch (error) {
         console.error("AI ERROR:", error.message);
-        return "Error connecting to local AI";
+        return null;
     }
 }
